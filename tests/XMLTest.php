@@ -15,9 +15,15 @@ class XMLTest extends TestCase
         //     $age->convAge(160*365)
         // );
 
+        // $this->assertSame(
+        //     160,
+        //     $xml->readFile()
+        // // );
+        $xml->readFile();
+        
         $this->assertSame(
             160,
-            $xml->readFile()
+            $xml->saveFile()
         );
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<row>
-	<login>Petr15</login><password>12</password><email>Petr@mailr.u</email><name>Пётр Иванов</name>
-	<login>Petr15</login><password>12</password><email>Petr@mailr.u</email><name>Пётр Иванов</name>
-</row>
+<row><login>Petr15</login><password>12</password><email>Petr@mail.ru</email><name>Пётр Иванов</name></row>
+<row><login>Petr1552</login><password>12</password><email>Petr@mail.ru</email><name>Пётр Иванов</name></row>
+<row><login>spawn5194</login><password>12</password><email>yurysviridenko90@gmail.com</email><name>1</name></row>
+<row><login>ВАСЯ</login><password>14</password><email>spawn5194@mail.ru</email><name>Игорь</name></row>
