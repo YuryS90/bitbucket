@@ -16,6 +16,10 @@ use App\XML;
 
 <body>
     <?php
+    // if ($_POST['pass'] != $_POST['conpass']) {
+    //     echo "Потвердите пароль ещё раз";
+    // }
+
 
     $save = new XML();
 
@@ -23,26 +27,27 @@ use App\XML;
         ->readFile()
         ->addData(
             $_POST['login'],
-            $_POST['pass'],
+            md5($_POST['pass']),
             $_POST['email'],
             $_POST['name']
         )
         ->saveFile();
+
 
     ?>
 
     <h1>Регистрация</h1>
     <form action="?" method="POST">
         <h3>Логин</h3>
-        <input type="text" name="login">
+        <input type="text" name="login" required>
         <h3>Пароль</h3>
-        <input type="password" name="pass">
+        <input type="password" name="pass" required>
         <h3>Потвердите пароль</h3>
-        <input type="password" name="conpass">
+        <input type="password" name="conpass" required>
         <h3>Еmail</h3>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
         <h3>Имя</h3>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
         <input type="submit" value="ok">
     </form>
 

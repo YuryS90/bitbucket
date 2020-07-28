@@ -2,11 +2,13 @@
 
 namespace App;
 
+use phpDocumentor\Reflection\Types\This;
+
 class XML
 {
-    //1. Прочитать данные из файла Для чего?
+    //1. Прочитать данные из файла, чтобы комп знал с чем работает
     //2. добавить данные про пользователя
-    //3. сохранить данные в файл ДЛя чего???
+    //3. сохранить данные в файл
 
     protected $fileName = "bd.xml";
     protected $data;
@@ -36,9 +38,18 @@ class XML
 
     public function addData($login, $pass, $email, $name)
     {
-        //чтобы посмотреть куда добавляю
-        print_r($this->data);
-        $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
+        //чтобы посмотреть как выглядит массив (ключ-значение), и узнать каким образом добавить
+        // print_r($this->data);
+
+        if(!empty($login || $pass  || $email  || $name )) {
+            
+        }
+        if (($this->uniqueField('login', $login)) || ($this->uniqueField('email', $email))) {
+            echo "Такой логин или email существуют";
+        } else {
+            $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
+        }
+
         return $this;
     }
 
@@ -60,4 +71,22 @@ class XML
         }
         return $this;
     }
+
+
+    // есть ли такое значение  value в столбце field
+    public function uniqueField($field, $value)
+    {
+        // print_r($this->data);
+        // print_r(array_column($this->data, $field));
+
+        return in_array($value, array_column($this->data, $field));
+    }
+
+    // public function checkPass($password, $confirmPassword)
+    // {
+    //     if($password != $confirmPassword) {
+    //         echo "Потвердите пароль ещё раз";
+    //     }
+    //     return $this;
+    // }
 }
