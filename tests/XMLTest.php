@@ -15,10 +15,10 @@ class XMLTest extends TestCase
         //     $age->convAge(160*365)
         // );
 
-        $this->assertSame(
-            true,
-            $xml->readFile()->uniqueField('login', "ВАСЯ")
-        );
+        // $this->assertSame(
+        //     true,
+        //     $xml->readFile()->uniqueField('login', "ВАСЯ")
+        // );
         
         
         // $this->assertSame(

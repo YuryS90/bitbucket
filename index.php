@@ -33,21 +33,21 @@ use App\XML;
         )
         ->saveFile();
 
-
+//required
     ?>
 
     <h1>Регистрация</h1>
     <form action="?" method="POST">
         <h3>Логин</h3>
-        <input type="text" name="login" required>
+        <input type="text" name="login" >
         <h3>Пароль</h3>
-        <input type="password" name="pass" required>
+        <input type="password" name="pass" >
         <h3>Потвердите пароль</h3>
-        <input type="password" name="conpass" required>
+        <input type="password" name="conpass" >
         <h3>Еmail</h3>
-        <input type="email" name="email" required>
+        <input type="email" name="email" >
         <h3>Имя</h3>
-        <input type="text" name="name" required>
+        <input type="text" name="name" >
         <input type="submit" value="ok">
     </form>
 

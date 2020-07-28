@@ -41,14 +41,46 @@ class XML
         //чтобы посмотреть как выглядит массив (ключ-значение), и узнать каким образом добавить
         // print_r($this->data);
 
-        if(!empty($login || $pass  || $email  || $name )) {
-            
+        if (empty($login)) {
+            echo "Заполните поле Логин";
+            return $this;
         }
-        if (($this->uniqueField('login', $login)) || ($this->uniqueField('email', $email))) {
-            echo "Такой логин или email существуют";
-        } else {
-            $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
+
+        if (empty($pass)) {
+            echo "Заполните поле Пароль";
         }
+
+        if (empty($email)) {
+            echo "Заполните поле Email";
+        }
+
+        if (empty($name)) {
+            echo "Заполните поле Имя";
+        }
+
+        if ($this->uniqueField('login', $login)) {
+            echo "Такой логин существуют";
+            if ($this->uniqueField('email', $email)) {
+                echo "Такой email существуют";
+            } else {
+                $this->data[] = [
+                    'login' => $login,
+                    'password' => $pass,
+                    'email' => $email,
+                    'name' => $name
+                ];
+            }
+        }
+
+        // if($this->uniqueField('email', $email)) {
+        //     echo "Такой email существуют";
+        // }
+
+        // if (($this->uniqueField('login', $login)) || ($this->uniqueField('email', $email))) {
+        //     echo "Такой логин или email существуют";
+        // } else {
+        //     $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
+        // }
 
         return $this;
     }
