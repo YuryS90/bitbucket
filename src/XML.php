@@ -2,23 +2,21 @@
 
 namespace App;
 
-use phpDocumentor\Reflection\Types\This;
-
 class XML
 {
     //1. Прочитать данные из файла, чтобы комп знал с чем работает
     //2. добавить данные про пользователя
     //3. сохранить данные в файл
 
-    protected $fileName = "bd.xml";
+    // protected $fileName = "bd.xml";
     protected $data;
 
-    public function readFile()
+    public function readFile($fileName)
     {
         preg_match_all(
             // "/<(.{1,})>(.*?)<\/.{1,}><(.{1,})>(.*?)<\/.{1,}><(.{1,})>(.*?)<\/.{1,}><(.{1,})>(.*?)<\/.{1,}>/ui",
             "/<login>(.*?)<\/login><password>(.*?)<\/password><email>(.*?)<\/email><name>(.*?)<\/name>/ui",
-            file_get_contents($this->fileName), // читаем из файла .xml строку
+            file_get_contents($fileName), // читаем из файла .xml строку
             $arr_tags
         ); // вытаскиваем данные из xml-тегов
         // print_r($arr_tags);
@@ -34,6 +32,12 @@ class XML
         return $this;
     }
 
+    // делаем метод чтобы возврашщал data
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
 
 
     public function addData($login, $pass, $email, $name)
@@ -41,53 +45,52 @@ class XML
         //чтобы посмотреть как выглядит массив (ключ-значение), и узнать каким образом добавить
         // print_r($this->data);
 
-        if (empty($login)) {
-            echo "Заполните поле Логин";
-            return $this;
-        }
+        // if (empty($login)) {
+        //     echo "Заполните поле Логин";
 
-        if (empty($pass)) {
-            echo "Заполните поле Пароль";
-        }
+        // }
 
-        if (empty($email)) {
-            echo "Заполните поле Email";
-        }
+        // if (empty($pass)) {
+        //     echo "Заполните поле Пароль";
 
-        if (empty($name)) {
-            echo "Заполните поле Имя";
-        }
+        // }
 
-        if ($this->uniqueField('login', $login)) {
-            echo "Такой логин существуют";
-            if ($this->uniqueField('email', $email)) {
-                echo "Такой email существуют";
-            } else {
-                $this->data[] = [
-                    'login' => $login,
-                    'password' => $pass,
-                    'email' => $email,
-                    'name' => $name
-                ];
-            }
-        }
+        // if (empty($email)) {
+        //     echo "Заполните поле Email";
+
+        // }
+
+        // if (empty($name)) {
+        //     echo "Заполните поле Имя";
+
+        // }
+
+        // if ($this->uniqueField('login', $login)) {
+        //     echo "Такой логин существуют";
+        //     if ($this->uniqueField('email', $email)) {
+        //         echo "Такой email существуют";
+        //     } else {
+        //         $this->data[] = [
+        //             'login' => $login,
+        //             'password' => $pass,
+        //             'email' => $email,
+        //             'name' => $name
+        //         ];
+        //     }
+        // }
 
         // if($this->uniqueField('email', $email)) {
         //     echo "Такой email существуют";
         // }
+        $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
 
-        // if (($this->uniqueField('login', $login)) || ($this->uniqueField('email', $email))) {
-        //     echo "Такой логин или email существуют";
-        // } else {
-        //     $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
-        // }
 
         return $this;
     }
 
 
     // преобразуем массив в Xml строку 
-    public function saveFile()
+    public function saveFile($fileName)
     {
         if (!empty($this->data)) {
             $xml = "<?xml version=\"1.1\" encoding=\"UTF-8\"?>\n";
@@ -99,18 +102,18 @@ class XML
                 $xml .= "</row>\n";
             }
             // echo $xml;
-            file_put_contents($this->fileName, $xml);
+            file_put_contents($fileName, $xml);
         }
         return $this;
     }
 
+    // Метод который будет добавлять но с проверкой
+    // МЕТОД КОТОРЫЙ ПРОВЕРЯЕТ ПЕРЕД СОХРАНЕНИЕМ УНИКАЛЬНОСТЬ И
+
 
     // есть ли такое значение  value в столбце field
-    public function uniqueField($field, $value)
+    protected function existenceValue($field, $value): bool
     {
-        // print_r($this->data);
-        // print_r(array_column($this->data, $field));
-
         return in_array($value, array_column($this->data, $field));
     }
 

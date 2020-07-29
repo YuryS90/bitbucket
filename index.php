@@ -23,15 +23,15 @@ use App\XML;
 
     $save = new XML();
 
-    $save
-        ->readFile()
-        ->addData(
-            $_POST['login'],
-            md5($_POST['pass']),
-            $_POST['email'],
-            $_POST['name']
-        )
-        ->saveFile();
+    // $save
+    //     ->readFile()
+    //     ->addData(
+    //         $_POST['login'],
+    //         md5($_POST['pass']),
+    //         $_POST['email'],
+    //         $_POST['name']
+    //     )
+    //     ->saveFile();
 
 //required
     ?>
