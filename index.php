@@ -3,6 +3,8 @@
 include "../bitbucket/vendor/autoload.php";
 
 use App\XML;
+use App\XMLTable;
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,8 @@ use App\XML;
     // }
 
 
-    $save = new XML();
+    $save = new XMLTable();
+
 
     // $save
     //     ->readFile()

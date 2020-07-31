@@ -8,9 +8,8 @@ class XML
     //2. добавить данные про пользователя
     //3. сохранить данные в файл
 
-    // protected $fileName = "bd.xml";
     protected $data;
-
+    
     public function readFile($fileName)
     {
         preg_match_all(
@@ -45,43 +44,6 @@ class XML
         //чтобы посмотреть как выглядит массив (ключ-значение), и узнать каким образом добавить
         // print_r($this->data);
 
-        // if (empty($login)) {
-        //     echo "Заполните поле Логин";
-
-        // }
-
-        // if (empty($pass)) {
-        //     echo "Заполните поле Пароль";
-
-        // }
-
-        // if (empty($email)) {
-        //     echo "Заполните поле Email";
-
-        // }
-
-        // if (empty($name)) {
-        //     echo "Заполните поле Имя";
-
-        // }
-
-        // if ($this->uniqueField('login', $login)) {
-        //     echo "Такой логин существуют";
-        //     if ($this->uniqueField('email', $email)) {
-        //         echo "Такой email существуют";
-        //     } else {
-        //         $this->data[] = [
-        //             'login' => $login,
-        //             'password' => $pass,
-        //             'email' => $email,
-        //             'name' => $name
-        //         ];
-        //     }
-        // }
-
-        // if($this->uniqueField('email', $email)) {
-        //     echo "Такой email существуют";
-        // }
         $this->data[] = ['login' => $login, 'password' => $pass, 'email' => $email, 'name' => $name];
 
 
@@ -107,9 +69,6 @@ class XML
         return $this;
     }
 
-    // Метод который будет добавлять но с проверкой
-    // МЕТОД КОТОРЫЙ ПРОВЕРЯЕТ ПЕРЕД СОХРАНЕНИЕМ УНИКАЛЬНОСТЬ И
-
 
     // есть ли такое значение  value в столбце field
     protected function existenceValue($field, $value): bool
@@ -117,11 +76,4 @@ class XML
         return in_array($value, array_column($this->data, $field));
     }
 
-    // public function checkPass($password, $confirmPassword)
-    // {
-    //     if($password != $confirmPassword) {
-    //         echo "Потвердите пароль ещё раз";
-    //     }
-    //     return $this;
-    // }
 }

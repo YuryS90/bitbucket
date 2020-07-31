@@ -1,1 +1,1 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":170:{a:2:{s:7:"defects";a:2:{s:16:"XMLTest::testXML";i:3;s:21:"XMLTest::testXMLTable";i:3;}s:5:"times";a:2:{s:16:"XMLTest::testXML";d:0.006;s:21:"XMLTest::testXMLTable";d:0;}}}
+C:37:"PHPUnit\Runner\DefaultTestResultCache":174:{a:2:{s:7:"defects";a:2:{s:16:"XMLTest::testXML";i:3;s:21:"XMLTest::testXMLTable";i:3;}s:5:"times";a:2:{s:16:"XMLTest::testXML";d:0.006;s:21:"XMLTest::testXMLTable";d:0.002;}}}

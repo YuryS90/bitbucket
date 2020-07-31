@@ -1,0 +1,4 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<row><login>Petr</login><password>12</password><email>Petr@mail.ru</email><name>Пётр Иванов</name></row>
+<row><login>Yury</login><password>14</password><email>Yury@mail.ru</email><name>Юрий Иванов</name></row>
+<row><login>Igor</login><password>15</password><email>Igor@mail.ru</email><name>игорь Иванов</name></row>
