@@ -227,8 +227,8 @@ class XMLTest extends TestCase
          */
         $this->assertTrue(
             $xml
-                ->readFile('tests/test3.xml')
-                ->checkUser('Igor', '15')
+                ->readFile('tests/test21.xml')
+                ->checkUser('Petr151', 'ce0f7dc57c388faf9418513c64148b5b')
         );
 
 
